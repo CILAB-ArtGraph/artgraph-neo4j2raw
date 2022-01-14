@@ -1,0 +1,11 @@
+{
+"('artwork', 'media', 'media')" : "MATCH (a:Artwork)-[r:Media]->(m:Media) RETURN a.name as source_name, m.name as dest_name",
+"('artwork', 'about', 'tag')" : "MATCH (a:Artwork)-[r:About]->(t:Tag) RETURN a.name as source_name, t.name as dest_name",
+"('artwork', 'genre', 'genre')" : "MATCH (a:Artwork)-[r:Genre]->(g:Genre) RETURN a.name as source_name, g.name as dest_name",
+"('artwork', 'style', 'style')" : "MATCH (a:Artwork)-[r:Style]->(s:Style) RETURN a.name as source_name, s.name as dest_name",
+"('artwork', 'author', 'artist')" : "MATCH (a:Artwork)-[r:Author]->(a2:Artist) RETURN a.name as source_name, a2.name as dest_name",
+"('artist', 'movement', 'movement')" : "MATCH (a:Artist)-[r:Movement]->(m:Movement) RETURN a.name as source_name, m.name as dest_name",
+"('artist', 'field', 'field')" : "MATCH (a:Artist)-[r:Field]->(f:Field) RETURN a.name as source_name, f.name as dest_name",
+"('artist', 'teacher', 'artist')" : "MATCH (a:Artist)-[r:Teacher]->(a2:Artist) RETURN a.name as source_name, a2.name as dest_name",
+"('artwork', 'locatedin', 'gallery')" : "MATCH (a:Artwork)-[r:LocatedIn]->(g:Gallery) RETURN a.name as source_name, g.name as dest_name"
+}

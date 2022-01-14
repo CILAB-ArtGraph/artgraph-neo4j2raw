@@ -1,0 +1,19 @@
+{
+"artwork": "MATCH (a:Artwork)RETURN a.name as name", 
+"artist" : "MATCH (a:Artist) RETURN a.name as name",
+"style" : "MATCH (s:Style) RETURN s.name as name",
+"genre" : "MATCH (g:Genre) RETURN g.name as name",
+"tag" : "MATCH (t:Tag) RETURN t.name as name",
+"media" : "MATCH (m:Media) RETURN m.name as name",
+"movement": "MATCH (m:Movement) RETURN m.name as name",
+"field": "MATCH (f:Field) RETURN f.name as name",
+"gallery": "MATCH (g:Gallery) RETURN g.name as name",
+"city": "MATCH (c:City) RETURN c.name as name",
+"subject": "MATCH (s:Subject) RETURN s.name as name",
+"training": "MATCH (t:Training) RETURN t.name as name",
+"people": "MATCH (p:People) RETURN p.name as name",
+"serie": "MATCH (s:Serie) RETURN s.name as name",
+"country": "MATCH (c:Country) RETURN c.name as name",
+"period": "MATCH (p:Period) RETURN p.name as name",
+"rel" : "MATCH (n)-[r]->(n2) RETURN distinct toLower(type(r)) as rel_label"
+}

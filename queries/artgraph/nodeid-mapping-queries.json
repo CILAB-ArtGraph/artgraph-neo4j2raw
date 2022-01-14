@@ -1,0 +1,18 @@
+{
+"artist" : "MATCH (a:Artist) WHERE a.url IS NOT NULL RETURN a.url as name, ID(a) as nodeId",
+"style" : "MATCH (s:Style) RETURN s.name as name, ID(s) as nodeId",
+"genre" : "MATCH (g:Genre) RETURN g.name as name, ID(g) as nodeId",
+"people" : "MATCH (p:People) RETURN p.name as name, ID(p) as nodeId",
+"subject" : "MATCH (s:Subject) RETURN s.name as name, ID(s) as nodeId",
+"training" : "MATCH (t:Training) RETURN t.name as name, ID(t) as nodeId",
+"movement" : "MATCH (m:Movement)  RETURN m.name as name, ID(m) as nodeId",
+"field" : "MATCH (f:Field) RETURN f.name as name, ID(f) as nodeId",
+"serie" : "MATCH (s:Serie) ETURN s.name as name, ID(s) as nodeId",
+"tag" : "MATCH (t:Tag) RETURN t.name as name, ID(t) as nodeId",
+"auction" : "MATCH (a:Auction) RETURN a.name as name, ID(a) as nodeId",
+"media" : "MATCH (m:Media) RETURN m.name as name, ID(m) as nodeId",
+"period" : "MATCH (p:Period) RETURN p.name as name, ID(p) as nodeId",
+"city" : "MATCH (c:City) RETURN c.name as name, ID(c) as nodeId",
+"gallery" : "MATCH (g:Gallery) RETURN g.name as name, ID(g) as nodeId",
+"country" : "MATCH (c:Country) RETURN c.name as name, ID(c) as nodeId"
+}

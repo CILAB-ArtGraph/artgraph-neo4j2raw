@@ -1,0 +1,23 @@
+{
+"('artist', 'influenced', 'artist')": "MATCH (a:Artist)-[r:Influenced]->(a2:Artist) WHERE a.url IS NOT NULL AND a2.url IS NOT NULL RETURN a.url as source_name, a2.url as dest_name",
+"('artist', 'subject', 'subject')": "MATCH (a:Artist)-[r:Subject]->(s:Subject) WHERE a.url IS NOT NULL RETURN a.url as source_name, s.name as dest_name",
+"('artist', 'training', 'training')": "MATCH (a:Artist)-[r:Training]->(t:Training) WHERE a.url IS NOT NULL RETURN a.url as source_name, t.name as dest_name",
+"('artist', 'field', 'field')": "MATCH (a:Artist)-[r:Field]->(f:Field) WHERE a.url IS NOT NULL RETURN a.url as source_name, f.name as dest_name",
+"('artist', 'movement', 'movement')": "MATCH (a:Artist)-[r:Movement]->(m:Movement)  WHERE a.url IS NOT NULL RETURN a.url as source_name, m.name as dest_name",
+"('artist', 'patrons', 'people')": "MATCH (a:Artist)-[r:Patrons]->(p:People) WHERE a.url IS NOT NULL RETURN a.url as source_name, p.name as dest_name",
+"('artist', 'teacher', 'artist')": "MATCH (a:Artist)-[r:Teacher]->(a2:Artist) WHERE a.url IS NOT NULL AND a2.url IS NOT NULL RETURN a.url as source_name, a2.url as dest_name",
+"('gallery', 'city', 'city')": "MATCH (g:Gallery)-[r:City]->(c:City) RETURN g.name as source_name, c.name as dest_name",
+"('city', 'country', 'country')": "MATCH (c:City)-[r:Country]->(c2:Country) RETURN c.name as source_name, c2.name as dest_name",
+"('gallery', 'country', 'country')": "MATCH (g:Gallery)-[r:Country]->(c:Country)  RETURN g.name as source_name, c.name as dest_name",
+"('artwork', 'media', 'media')" : "MATCH (a:Artwork)-[r:Media]->(m:Media), (a:Artwork)-[:Author]->(a2:Artist) UNWIND a2.url + \"_\" + a.url + \".jpg\" AS name RETURN name as source_name, m.name as dest_name",
+"('artwork', 'about', 'tag')" : "MATCH (a:Artwork)-[r:About]->(t:Tag), (a:Artwork)-[:Author]->(a2:Artist) UNWIND a2.url + \"_\" + a.url + \".jpg\" AS name RETURN name as source_name, t.name as dest_name",
+"('artwork', 'genre', 'genre')" : "MATCH (a:Artwork)-[r:Genre]->(g:Genre), (a:Artwork)-[:Author]->(a2:Artist) UNWIND a2.url + \"_\" + a.url + \".jpg\" AS name RETURN name as source_name, g.name as dest_name",
+"('artwork', 'style', 'style')" : "MATCH (a:Artwork)-[r:Style]->(s:Style), (a:Artwork)-[:Author]->(a2:Artist) UNWIND a2.url + \"_\" + a.url + \".jpg\" AS name RETURN name as source_name, s.name as dest_name",
+"('artwork', 'author', 'artist')" : "MATCH (a:Artwork)-[r:Author]->(a2:Artist) UNWIND a2.url + \"_\" + a.url + \".jpg\" AS name RETURN name as source_name, a2.url as dest_name",
+"('artwork', 'period', 'period')" : "MATCH (a:Artwork)-[r:Period]->(p:Period), (a:Artwork)-[:Author]->(a2:Artist) UNWIND a2.url + \"_\" + a.url + \".jpg\" AS name RETURN name as source_name, p.name as dest_name",
+"('artwork', 'locatedin', 'gallery')" : "MATCH (a:Artwork)-[r:LocatedIn]->(g:Gallery), (a:Artwork)-[:Author]->(a2:Artist) UNWIND a2.url + \"_\" + a.url + \".jpg\" AS name RETURN name as source_name, g.name as dest_name",
+"('artwork', 'auction', 'auction')" : "MATCH (a:Artwork)-[r:Auction]->(au:Auction), (a:Artwork)-[:Author]->(a2:Artist) UNWIND a2.url + \"_\" + a.url + \".jpg\" AS name RETURN name as source_name, au.name as dest_name",
+"('artwork', 'serie', 'serie')" : "MATCH (a:Artwork)-[r:Serie]->(s:Serie), (a:Artwork)-[:Author]->(a2:Artist) UNWIND a2.url + \"_\" + a.url + \".jpg\" AS name RETURN name as source_name, s.name as dest_name",
+"('artwork', 'completedin', 'city')" : "MATCH (a:Artwork)-[r:CompletedIn]->(c:City),  (a:Artwork)-[:Author]->(a2:Artist) UNWIND a2.url + \"_\" + a.url + \".jpg\" AS name RETURN name as source_name, c.name as dest_name",
+"('people', 'patrons', 'artist')": "MATCH (p:People)-[r:Patrons]->(a:Artist)  WHERE a.url IS NOT NULL RETURN p.name as source_name, a.url as dest_name"
+}

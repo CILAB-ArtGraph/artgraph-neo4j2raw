@@ -1,0 +1,5 @@
+{
+"node_labels_stats" : "MATCH (n) RETURN distinct labels(n) as node_label, count(*) as count",
+"rel_labels_stats" : "MATCH (n)-[r]->(n2) RETURN distinct type(r) as rel_label, count(*) as count",
+"triplet-type-list" : "MATCH (x)-[r]->(y) RETURN distinct HEAD(labels(x)) as head, type(r), head(labels(y)) as tail"
+}

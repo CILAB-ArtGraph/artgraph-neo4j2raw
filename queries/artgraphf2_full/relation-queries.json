@@ -1,0 +1,21 @@
+{
+"('artwork', 'media', 'media')" : "MATCH (a:Artwork)-[r:Media]->(m:Media) RETURN a.name as source_name, m.name as dest_name",
+"('artwork', 'about', 'tag')" : "MATCH (a:Artwork)-[r:About]->(t:Tag) RETURN a.name as source_name, t.name as dest_name",
+"('artwork', 'genre', 'genre')" : "MATCH (a:Artwork)-[r:Genre]->(g:Genre) RETURN a.name as source_name, g.name as dest_name",
+"('artwork', 'style', 'style')" : "MATCH (a:Artwork)-[r:Style]->(s:Style) RETURN a.name as source_name, s.name as dest_name",
+"('artwork', 'author', 'artist')" : "MATCH (a:Artwork)-[r:Author]->(a2:Artist) RETURN a.name as source_name, a2.name as dest_name",
+"('artist', 'movement', 'movement')" : "MATCH (a:Artist)-[r:Movement]->(m:Movement) RETURN a.name as source_name, m.name as dest_name",
+"('artist', 'field', 'field')" : "MATCH (a:Artist)-[r:Field]->(f:Field) RETURN a.name as source_name, f.name as dest_name",
+"('artist', 'teacher', 'artist')" : "MATCH (a:Artist)-[r:Teacher]->(a2:Artist) RETURN a.name as source_name, a2.name as dest_name",
+"('artist', 'subject', 'subject')" : "MATCH (a:Artist)-[r:Subject]->(a2:Subject) RETURN a.name as source_name, a2.name as dest_name",
+"('artist', 'training', 'training')" : "MATCH (a:Artist)-[r:Training]->(a2:Training) RETURN a.name as source_name, a2.name as dest_name",
+"('artist', 'patrons', 'people')" : "MATCH (a:Artist)-[r:Patrons]->(a2:People) RETURN a.name as source_name, a2.name as dest_name",
+"('artwork', 'serie', 'serie')" : "MATCH (a:Artwork)-[r:Serie]->(a2:Serie) RETURN a.name as source_name, a2.name as dest_name",
+"('artwork', 'completedin', 'country')" : "MATCH (a:Artwork)-[r:CompletedIn]->(a2:Country) RETURN a.name as source_name, a2.name as dest_name",
+"('artwork', 'completedin', 'city')" : "MATCH (a:Artwork)-[r:CompletedIn]->(a2:City) RETURN a.name as source_name, a2.name as dest_name",
+"('artwork', 'period', 'period')" : "MATCH (a:Artwork)-[r:Period]->(a2:Period) RETURN a.name as source_name, a2.name as dest_name",
+"('gallery', 'country', 'country')" : "MATCH (a:Gallery)-[r:Country]->(a2:Country) RETURN a.name as source_name, a2.name as dest_name",
+"('gallery', 'city', 'city')" : "MATCH (a:Gallery)-[r:City]->(a2:City) RETURN a.name as source_name, a2.name as dest_name",
+"('city', 'country', 'country')" : "MATCH (a:City)-[r:Country]->(a2:Country) RETURN a.name as source_name, a2.name as dest_name",
+"('artwork', 'locatedin', 'gallery')" : "MATCH (a:Artwork)-[r:LocatedIn]->(g:Gallery) RETURN a.name as source_name, g.name as dest_name"
+}

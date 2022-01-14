@@ -1,0 +1,20 @@
+{
+"artwork": "MATCH (a:Artwork)-[:Author]->(a2:Artist) UNWIND a2.url + \"_\" + a.url + \".jpg\" AS name RETURN name", 
+"artist" : "MATCH (a:Artist) WHERE a.url IS NOT NULL RETURN a.url as name",
+"style" : "MATCH (s:Style) RETURN s.name as name",
+"genre" : "MATCH (g:Genre) RETURN g.name as name",
+"people" : "MATCH (p:People) RETURN p.name as name",
+"subject" : "MATCH (s:Subject) RETURN s.name as name",
+"training" : "MATCH (t:Training) RETURN t.name as name",
+"movement" : "MATCH (m:Movement) RETURN m.name as name",
+"field" : "MATCH (f:Field) RETURN f.name as name",
+"serie" : "MATCH (s:Serie) RETURN s.name as name",
+"tag" : "MATCH (t:Tag) RETURN t.name as name",
+"auction" : "MATCH (a:Auction) RETURN a.name as name",
+"media" : "MATCH (m:Media) RETURN m.name as name",
+"period" : "MATCH (p:Period) RETURN p.name as name",
+"city" : "MATCH (c:City) RETURN c.name as name",
+"gallery" : "MATCH (g:Gallery) RETURN g.name as name",
+"country" : "MATCH (c:Country) RETURN c.name as name",
+"rel" : "MATCH (n)-[r]->(n2) RETURN distinct toLower(type(r)) as rel_label"
+}

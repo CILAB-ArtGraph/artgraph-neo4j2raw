@@ -1,0 +1,8 @@
+{
+"artwork" : "MATCH (a:Artwork) RETURN a.name as name, ID(a) as nodeId",
+"artist" : "MATCH (a:Artist) RETURN a.name as name, ID(a) as nodeId",
+"style" : "MATCH (s:Style) RETURN s.name as name, ID(s) as nodeId",
+"genre" : "MATCH (g:Genre) RETURN g.name as name, ID(g) as nodeId",
+"tag" : "MATCH (t:Tag) RETURN t.name as name, ID(t) as nodeId",
+"media" : "MATCH (m:Media) RETURN m.name as name, ID(m) as nodeId"
+}

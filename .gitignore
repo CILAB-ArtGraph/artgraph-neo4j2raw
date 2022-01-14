@@ -1,0 +1,10 @@
+#env file
+.env
+
+#python stuff
+__pycache__/
+
+#big files
+neo4j/
+datasets/
+
