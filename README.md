@@ -61,26 +61,26 @@ It contains the following files:
     <li>
         <strong>triplet-type-list.csv</strong>, a 3 columns csv file, the first for the source node name, the second for the relation name and the third for the destination node name. The first rows are:
         <br/><br/>
-        <code>artist, influenced, artist</code><br/>
-        <code>artist, subject, subject</code><br/>
+        <code>artwork, media, media</code><br/>
+        <code>artwork, about, tag</code><br/>
         <code>...</code>
     </li>
     <li>
         <strong>num-node-dict.csv</strong>, a csv file that contains the number of nodes for each node name. The first columns are:
         <br/><br/>
         <code>artist, gallery, city, country, ...</code><br/>
-        <code>300, 1090, 665, 64, ...</code><br/>
+        <code>2501, 1099, 596, 58, ...</code><br/>
     </li>
     <li>
         <strong>nodetype-has-feat.csv</strong>, a csv file that contains for each node name "True" if that node has an associated feature vector or "False" if not.
         <br/><br/>
-        <code>artwork, gallery, city, country, artwork, ...</code><br/>
+        <code>artist, gallery, city, country, artwork, ...</code><br/>
         <code>False, False, False,  False, True, ...</code><br/>
     </li>
     <li>
         <strong>nodetype-has-label.csv</strong>, a csv file that contains for each node name "True" if that node has an associated label (for classification task) or "False" if not. 
         <br/><br/>
-        <code>artwork, gallery, city, country, artwork, ...</code><br/>
+        <code>artist, gallery, city, country, artwork, ...</code><br/>
         <code>False, False, False,  False, True, ...</code><br/>
     </li>
 </ul>
