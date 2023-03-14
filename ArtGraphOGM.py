@@ -99,7 +99,7 @@ class Relation():
             f.write(str(self.edges_number))
 
         if self._attributes is not None:
-            self._edges.to_csv(os.path.join(folder_path, "attributes.csv"), index=False, header=False)
+            self._attributes.to_csv(os.path.join(folder_path, "attributes.csv"), index=False, header=False)
         f.close()
 
 class Relations():

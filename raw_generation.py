@@ -149,6 +149,9 @@ class ArtGraphWithSplit():
             id_relation = mapping_relation[relation_name]
             relation = Relation(id=id_relation, name=relation_name, source=source_name, destination=destination_name)
             relation.add_edges(df_relation_mapping)
+
+            if 'weight' in df_triplet.columns:
+                relation.add_attributes(df_triplet.weight)
             
             self.relations.add_relation((source_name, relation_name, destination_name), relation)
         agdb.close()

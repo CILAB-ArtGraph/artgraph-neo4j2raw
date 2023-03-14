@@ -128,10 +128,10 @@ class ArtGraphNoSplit:
             source_name, relation_name, destination_name = literal_eval(triple)
             #get all the mappings
             df_triplet = agdb.df_from_query(query) #name_source, name_dest
-            if source_name == 'artwork':
+            '''if source_name == 'artwork':
                 df_triplet = df_triplet[df_triplet['source_name'].isin(self.artwork_subset)]
             if destination_name == 'artwork':
-                df_triplet = df_triplet[df_triplet['dest_name'].isin(self.artwork_subset)]
+                df_triplet = df_triplet[df_triplet['dest_name'].isin(self.artwork_subset)]'''
 
             df_mapping_source = self.nodes.get_node(source_name).get_instances() #id, name
             df_mapping_destination = self.nodes.get_node(destination_name).get_instances() #id, name
@@ -149,6 +149,10 @@ class ArtGraphNoSplit:
             id_relation = mapping_relation[relation_name]
             relation = Relation(id=id_relation, name=relation_name, source=source_name, destination=destination_name)
             relation.add_edges(df_relation_mapping)
+
+            # here add the attributes for those relations that have attributes on edges.
+            if 'weight' in df_triplet.columns:
+                relation.add_attributes(df_triplet.weight)
             
             self.relations.add_relation((source_name, relation_name, destination_name), relation)
         agdb.close()
