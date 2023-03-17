@@ -7,13 +7,10 @@ import os
 from torch_geometric.data import (InMemoryDataset, HeteroData, download_url,
                                   extract_zip)
 
-### LOAD ARTGRAPH WITH EMOTION ###
 
 class ArtGraph(InMemoryDataset):
-    url = "http://bicytour.altervista.org/artgraphv2/transductive/artgraphv2_transductive.zip" #to be moved
-
     def __init__(self, root, preprocess='one-hot', transform=None,
-                 pre_transform=None, features= 'vit', fine_tuning = True):
+                 pre_transform=None, features='vit', fine_tuning=True):
         preprocess = None if preprocess is None else preprocess.lower()
         self.preprocess = preprocess
         self.features = features.lower() if features is not None else None
@@ -26,8 +23,7 @@ class ArtGraph(InMemoryDataset):
         for f in os.listdir(fr'{root}/processed'):
             os.remove(fr'{root}/processed/{f}')
         os.rmdir(fr'{root}/processed')
-        
-        
+
     @property
     def raw_dir(self):
         return os.path.join(self.root, 'raw')
@@ -38,7 +34,6 @@ class ArtGraph(InMemoryDataset):
             'node-feat', 'node-label', 'relations', 'split',
             'num-node-dict.csv'
         ]
-
         return file_names
 
     @property
@@ -46,10 +41,7 @@ class ArtGraph(InMemoryDataset):
         return 'none.pt'
     
     def download(self):
-        if not all([os.path.exists(f) for f in self.raw_paths[:5]]):
-            path = download_url(self.url, self.root)
-            extract_zip(path, self.root)
-            os.remove(os.path.join(self.root, 'artgraphv2_transductive.zip'))
+        pass
             
     def process(self):
         data = pyg.data.HeteroData()
@@ -82,21 +74,26 @@ class ArtGraph(InMemoryDataset):
             for node_type in nodes_type:
                 data[node_type].x = torch.eye(num_nodes_df[node_type].tolist()[0])
 		
-        for edge_type in os.listdir(fr'{self.raw_dir}\relations'):
+        for edge_type in os.listdir(fr'{self.raw_dir}/relations'):
             sub, verb, obj = edge_type.split("___")
-            path = fr'{self.raw_dir}\relations\\{edge_type}\edge.csv'
+            path = fr'{self.raw_dir}/relations/{edge_type}/edge.csv'
             edge_index = pd.read_csv(path, header=None, dtype=np.int64).values
             edge_index = torch.from_numpy(edge_index).t().contiguous()
             if obj == 'training':
                 obj = 'training_node'
-            data[(sub, verb, obj)].edge_index = edge_index    
+            data[(sub, verb, obj)].edge_index = edge_index
+            # check for attributes on the link
+            path = fr'{self.raw_dir}/relations/{edge_type}'
+            if os.path.exists(f'{path}/attributes.csv'):
+                edge_weight = pd.read_csv(f'{path}/attributes.csv', header=None, dtype=np.int64).values
+                edge_weight = torch.from_numpy(edge_weight).flatten()
+                data[(sub, verb, obj)].edge_weight = edge_weight
             
         if self.pre_transform is not None:
             data = self.pre_transform(data)
         
         torch.save(self.collate([data]), self.processed_paths[0])
-        
-        
+
     @property
     def num_features(self):
         return self.data['artist'].x.shape[1]
